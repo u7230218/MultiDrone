@@ -14,12 +14,6 @@ class Graph_Node:
         self.parent = parent
         self.depth = depth
 
-# Samples a configuration around the prev_point by a fixed distance
-def sample_configuration(prev_point, distance):
-    lower_bound = prev_point - distance[:, None]
-    Upper_bound = prev_point + distance[:, None]
-    return np.random.uniform(low=np.maximum(lower_bound, np.zeros_like(lower_bound)), high=np.minimum(Upper_bound, np.full(Upper_bound.shape, 50, dtype=np.int32)), size=prev_point.shape)
-
 # Expanding successor nodes for a given node in a graph
 def expand_node(graph, node):
     successor_nodes = [] # TODO: Replace with a priority queue
@@ -66,6 +60,12 @@ def find_path_to_goal(sim, graph, start):
         solution.insert(0, cur_node.state)
         cur_node = cur_node.parent
     return solution
+
+# Samples a configuration around the prev_point by a fixed distance
+def sample_configuration(prev_point, distance):
+    lower_bound = prev_point - distance[:, None]
+    Upper_bound = prev_point + distance[:, None]
+    return np.random.uniform(low=np.maximum(lower_bound, np.zeros_like(lower_bound)), high=np.minimum(Upper_bound, np.full(Upper_bound.shape, 50, dtype=np.int32)), size=prev_point.shape)
 
 # Creates plan while only considering the presence of a single dron
 def my_planner(sim, total_iterations=10000):
