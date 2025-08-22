@@ -1,9 +1,7 @@
 import numpy as np
 from multi_drone import MultiDrone
 
-# Initialize the MultiDrone environment
-sim = MultiDrone(num_drones=2, environment_file="environment.yaml")
-
+# Class that deines the nodes within the graph
 class Graph_Node:
     def __init__(self, state, cost=None, parent=None, depth=0):
         self.state = state
@@ -113,7 +111,7 @@ def sample_configuration(prev_point, distance):
     return np.random.uniform(low=np.maximum(lower_bound, np.zeros_like(lower_bound)), high=np.minimum(Upper_bound, np.full(Upper_bound.shape, 50, dtype=np.int32)), size=prev_point.shape)
 
 # Creates plan while only considering the presence of a single dron
-def my_planner(sim, total_iterations=10000):
+def my_planner(sim, total_iterations=100):
     # Obtain the initial configuration and the goal positions
     initial_config = sim.initial_configuration
     goal_config = sim.goal_positions
@@ -142,6 +140,9 @@ def my_planner(sim, total_iterations=10000):
         print("cur_iteration = ", cur_iteration)
     print(" Could not find path in ", total_iterations, " iterations")
     return None
+
+# Initialize the MultiDrone environment
+sim = MultiDrone(num_drones=2, environment_file="environment.yaml")
 
 paths = my_planner(sim)
 sim.visualize_paths(paths)
