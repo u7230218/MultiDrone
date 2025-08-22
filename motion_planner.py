@@ -1,7 +1,7 @@
 import numpy as np
 from multi_drone import MultiDrone
 
-# Class that deines the nodes within the graph
+# Class that defines the nodes within the graph
 class Graph_Node:
     def __init__(self, state, cost=None, parent=None, depth=0):
         self.state = state
@@ -142,7 +142,7 @@ def my_planner(sim, total_iterations=1000):
     return None
 
 # Initialize the MultiDrone environment
-sim = MultiDrone(num_drones=1, environment_file="test_env_2.yaml")
+sim = MultiDrone(num_drones=1, environment_file="test_env_3.yaml")
 
 paths = my_planner(sim)
 sim.visualize_paths(paths)
