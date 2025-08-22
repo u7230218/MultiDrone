@@ -26,7 +26,7 @@ class Graph_Queue:
         if priority not in self.elements.keys():
             self.elements[priority] = [graph_node]
         else:
-            self.elements[priority].append(graph_node) # TODO: Order according to node cost
+            self.elements[priority].append(graph_node)
 
         # Replacing the current min priority in Queue
         if self._min_priority == None or priority < self._min_priority:
