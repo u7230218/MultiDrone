@@ -1,0 +1,19 @@
+bounds:
+  x: [0, 50] # x-bounds
+  y: [0, 50] # y-bounds
+  z: [0, 50] # z-bounds
+  
+initial_configuration: [[1, 1, 1], [3, 1, 1]] # The initial configuration (3D position) of all drones
+
+obstacles:
+  - type: box
+    position: [25, 40, 20] # The 3D position of the obstacle in the environment
+    size: [50, 4, 40] # The side lengths of the box-shaped obstacle
+    rotation: [0, 0, 0]  # Euler angles in degrees
+    color: red
+    
+goals:
+  - position: [48, 48, 2] # The 3D position of the first goal
+    radius: 1.0 # The radius of the first goal
+  - position: [20, 30, 2] # The 3D position of the second goal
+    radius: 1.0 # The radius of the second goal

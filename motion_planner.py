@@ -142,7 +142,7 @@ def my_planner(sim, total_iterations=1000):
     return None
 
 # Initialize the MultiDrone environment
-sim = MultiDrone(num_drones=1, environment_file="test_env_2.yaml")
+sim = MultiDrone(num_drones=2, environment_file="test_env_3.yaml")
 
 paths = my_planner(sim)
 sim.visualize_paths(paths)
