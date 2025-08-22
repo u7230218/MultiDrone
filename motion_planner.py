@@ -111,7 +111,7 @@ def sample_configuration(prev_point, distance):
     return np.random.uniform(low=np.maximum(lower_bound, np.zeros_like(lower_bound)), high=np.minimum(Upper_bound, np.full(Upper_bound.shape, 50, dtype=np.int32)), size=prev_point.shape)
 
 # Creates plan while only considering the presence of a single dron
-def my_planner(sim, total_iterations=100):
+def my_planner(sim, total_iterations=1000):
     # Obtain the initial configuration and the goal positions
     initial_config = sim.initial_configuration
     goal_config = sim.goal_positions
@@ -142,7 +142,7 @@ def my_planner(sim, total_iterations=100):
     return None
 
 # Initialize the MultiDrone environment
-sim = MultiDrone(num_drones=2, environment_file="environment.yaml")
+sim = MultiDrone(num_drones=1, environment_file="test_env_2.yaml")
 
 paths = my_planner(sim)
 sim.visualize_paths(paths)
