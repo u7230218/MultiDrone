@@ -133,7 +133,7 @@ def my_planner(sim, total_iterations=1000):
             prev_config = sampled_config
             for key in road_map.keys():
                 if sim.motion_valid(np.array(key), sampled_config):
-                    edge_weight = np.linalg.norm(np.array(key) - goal_config, axis=1)
+                    edge_weight = np.linalg.norm(np.array(key) - sampled_config, axis=1)
                     road_map[tuple(map(tuple, sampled_config))].append((np.array(key), edge_weight))
                     road_map[key].append((sampled_config, edge_weight))
         cur_iteration += 1
